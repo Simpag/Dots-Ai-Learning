@@ -11,6 +11,8 @@ public class Population : MonoBehaviour {
 
     float fitnessSum;
 
+    float mutationRate = 0.01f;
+
     int bestDot = 0;
 
     public int minStep = 1000;
@@ -175,6 +177,12 @@ public class Population : MonoBehaviour {
             //Add reference to new object
             population[i] = newPopulation[i];
 
+            //Mutate directions of every dot except the best one
+            if (i != 0)
+            {
+                //_listOfDir[i] = mutateDirection(_listOfDir[i]);
+            }
+
             //Add the directions
             population[i].GetComponent<Brain>().directions = _listOfDir[i];
         }
@@ -184,9 +192,29 @@ public class Population : MonoBehaviour {
         generation++;
     }
 
-    public void mutateDirection()
+    Vector3[] mutateDirection(Vector3[] _dir)
     {
-        
+        int mutations = 0, number = 0 ;
+        Debug.Log("MUTATE!");
+        for (int i = 0; i < _dir.Length; i++)
+        {
+            float _random = Random.Range(0f, 1f);
+            number++;
+            if (_random < mutationRate)
+            {
+                mutations++;
+                //Set direction to a new random
+                float _randomAngle = Random.Range(0, 360);
+
+                Debug.Log(_dir[i] + " to " + new Vector3(Mathf.Cos(_randomAngle * Mathf.Deg2Rad), 1, Mathf.Sin(_randomAngle * Mathf.Deg2Rad)));
+
+                _dir[i] = new Vector3(Mathf.Cos(_randomAngle * Mathf.Deg2Rad), 1, Mathf.Sin(_randomAngle * Mathf.Deg2Rad));
+            }
+        }
+
+        //Debug.Log("Mutatied: " + mutations + " of " + number);
+
+        return _dir;
     }
 
     /*public void mutateDots()
