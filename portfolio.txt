@@ -1,0 +1,8 @@
+{
+  "Modalname": "DotsAiModal",
+  "ProjectName" : "Natural Selection Ai",
+  "ProjectTopic" : "Unity Game",
+  "ProjectDescription" : "Dethär var mitt första försök att göra en natural selection ai. Det gick sådär.",
+  "Date" : "25/012-2018",
+  "Image" : "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/580/cached.offlinehbpl.hbpl.co.uk/news/NST/AI-20171012113039221.jpg"
+}
